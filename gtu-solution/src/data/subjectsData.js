@@ -3,11 +3,7 @@ const subjectsData = {
     "computer-engineering": {
       1: [
         { name: "Mathematics-1", pdf: "Ai.pdf" },
-        { name: "AI", pdf: "elephants.pdf" }
-      ],
-      3: [
-        { name: "Data Structures", pdf: "ds.pdf" },
-        { name: "DBMS", pdf: "dbms.pdf" }
+        { name: "AI", pdf: "Ai.pdf" }
       ]
     }
   }
