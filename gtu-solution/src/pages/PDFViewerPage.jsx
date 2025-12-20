@@ -205,12 +205,24 @@ function AdSenseAnchor({ position, client, slot, testMode = false }) {
         setTimeout(() => {
           const newStatus = el.getAttribute("data-adsbygoogle-status");
           console.log(`[AdSense ${position}] Status after push:`, newStatus);
-          if (newStatus === "error") {
+          
+          // Check if slot ID looks like a placeholder
+          const isPlaceholderSlot = slot === '1234567890' || slot === '0987654321' || 
+                                   slot === '123456789' || slot.length < 8;
+          
+          if (isPlaceholderSlot) {
+            console.warn(`[AdSense ${position}] ⚠️ Using placeholder slot ID "${slot}" - AdSense won't work. Create real ad units in AdSense and use their slot IDs.`);
+            setShowPlaceholder(true);
+          } else if (newStatus === "error") {
             console.error(`[AdSense ${position}] AdSense error - check browser console for details`);
+            console.error(`[AdSense ${position}] Possible causes: Invalid slot ID, domain not approved, or AdSense account issues`);
             setShowPlaceholder(true);
           } else if (!newStatus || newStatus === "unfilled") {
-            // Show placeholder if ad doesn't fill (common on localhost)
+            // Show placeholder if ad doesn't fill
+            console.warn(`[AdSense ${position}] Ad not filled. Status: ${newStatus || 'unfilled'}`);
             setShowPlaceholder(true);
+          } else if (newStatus === "done") {
+            console.log(`[AdSense ${position}] ✅ Ad successfully loaded!`);
           }
         }, 3000);
       } catch (e) {
