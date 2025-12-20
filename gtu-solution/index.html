@@ -10,6 +10,41 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- CRITICAL: Block AdSense network requests on localhost BEFORE any scripts load -->
+    <script>
+      (function() {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          // Block fetch requests to AdSense
+          const originalFetch = window.fetch;
+          window.fetch = function(...args) {
+            const url = typeof args[0] === 'string' ? args[0] : args[0]?.url || '';
+            if (url.includes('googleads.g.doubleclick.net') || 
+                url.includes('pagead2.googlesyndication.com') ||
+                url.includes('googlesyndication.com')) {
+              return Promise.reject(new Error('AdSense blocked on localhost'));
+            }
+            return originalFetch.apply(this, args);
+          };
+          
+          // Block XMLHttpRequest to AdSense
+          const originalXHROpen = XMLHttpRequest.prototype.open;
+          XMLHttpRequest.prototype.open = function(method, url, ...rest) {
+            if (typeof url === 'string' && (
+                url.includes('googleads.g.doubleclick.net') || 
+                url.includes('pagead2.googlesyndication.com') ||
+                url.includes('googlesyndication.com'))) {
+              this.send = function() {}; // Block send
+              return;
+            }
+            return originalXHROpen.apply(this, [method, url, ...rest]);
+          };
+          
+          // Block adsbygoogle.push immediately
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.push = function() { return; };
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -7,10 +7,12 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);   // user is firebase user object
+      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -19,7 +21,7 @@ export function AuthProvider({ children }) {
   const logout = () => signOut(auth);
 
   return (
-    <AuthContext.Provider value={{ user, logout }}>
+    <AuthContext.Provider value={{ user, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );

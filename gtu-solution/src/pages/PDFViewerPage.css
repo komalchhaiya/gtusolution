@@ -1,4 +1,8 @@
 /* src/pages/PDFViewer.css */
+:root {
+  --adsense-anchor-height: 90px;
+}
+
 .pdf-page-wrap {
   background: #F4F0EC;
   min-height: 100vh;
@@ -14,6 +18,43 @@
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
+}
+
+.pdf-page-wrap--with-top-ad {
+  padding-top: calc(24px + var(--adsense-anchor-height));
+}
+
+.pdf-page-wrap--with-bottom-ad {
+  padding-bottom: calc(24px + var(--adsense-anchor-height));
+}
+
+.adsense-anchor {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 9; /* Header is 10, so this stays below it */
+  padding: 8px 0;
+  background: rgba(244, 240, 236, 0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(185, 161, 133, 0.55);
+}
+
+.adsense-anchor--top {
+  top: var(--app-header-height, 72px);
+}
+
+.adsense-anchor--bottom {
+  bottom: 0;
+  border-bottom: none;
+  border-top: 1px solid rgba(185, 161, 133, 0.55);
+}
+
+.adsense-anchor__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 12px;
+  position: relative;
+  min-height: 90px;
 }
 
 .pdf-container {
@@ -165,6 +206,10 @@
 }
 
 @media (max-width: 720px) {
+  :root {
+    --adsense-anchor-height: 64px;
+  }
+
   .pdf-container {
     width: 94%;
   }

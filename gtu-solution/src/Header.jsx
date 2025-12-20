@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "./auth/AuthContext";
 
 function Header() {
   const { user, logout } = useContext(AuthContext);
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
 
   return (
     <header
@@ -62,34 +64,22 @@ function Header() {
           </>
         ) : (
           <>
-            {/* IF NOT LOGGED IN → show login/signup */}
-            <Link
-              to="/login"
-              style={{
-                padding: "0.6rem 1rem",
-                background: "#6b533c",
-                color: "white",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontSize: "0.9rem",
-              }}
-            >
-              Login
-            </Link>
-
-            <Link
-              to="/signup"
-              style={{
-                padding: "0.6rem 1rem",
-                background: "#0c0b07",
-                color: "white",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontSize: "0.9rem",
-              }}
-            >
-              Sign Up
-            </Link>
+            {/* IF NOT LOGGED IN → show login */}
+            {!isLoginPage && (
+              <Link
+                to="/login"
+                style={{
+                  padding: "0.6rem 1rem",
+                  background: "#6b533c",
+                  color: "white",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontSize: "0.9rem",
+                }}
+              >
+                Login
+              </Link>
+            )}
           </>
         )}
       </nav>
