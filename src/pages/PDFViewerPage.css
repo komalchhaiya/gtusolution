@@ -1,0 +1,244 @@
+/* src/pages/PDFViewer.css */
+.pdf-page-wrap {
+  background: #F4F0EC;
+  min-height: 100vh;
+  padding: 24px 0;
+  /* Disable text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Disable dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  -webkit-user-drag: none;
+}
+
+.pdf-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.pdf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.pdf-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-family: "Playfair Display", serif;
+  color: #0c0b07;
+}
+
+.pdf-subinfo {
+  font-size: 0.9rem;
+  color: #6b533c;
+  margin-top: 4px;
+}
+
+.pdf-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pdf-controls button,
+.pdf-controls .download-btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #6b533c;
+  color: #fff;
+  font-weight: 600;
+}
+
+.pdf-controls .download-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.pdf-viewer-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  position: relative;
+  /* Prevent selection and dragging */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pdf-loading,
+.pdf-error {
+  padding: 40px;
+  text-align: center;
+  color: #6b533c;
+  font-weight: 600;
+}
+
+.pdf-document {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Disable text selection on PDF canvas */
+.pdf-document canvas {
+  max-width: 100%;
+  height: auto;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  -webkit-user-drag: none;
+
+  pointer-events: auto;
+}
+
+.pdf-footer-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pdf-nav-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #6b533c;
+  background: #6b533c;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.pdf-nav-btn:hover:not(:disabled) {
+  background: #5a4530;
+}
+
+.pdf-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b533c;
+  font-weight: 500;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-input {
+  width: 64px;
+  text-align: center;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-weight: 600;
+}
+
+.page-input:focus {
+  outline: 2px solid #6b533c;
+  outline-offset: 2px;
+}
+
+.pdf-document {
+  position: relative;
+}
+
+/* ========================= */
+/* RESPONSIVE IMPROVEMENTS   */
+/* ========================= */
+
+/* Small mobiles */
+@media (max-width: 480px) {
+  .pdf-page-wrap {
+    padding: 12px 0;
+  }
+
+  .pdf-container {
+    width: 96%;
+  }
+
+  .pdf-title {
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  .pdf-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pdf-viewer-box {
+    padding: 12px;
+  }
+
+  .pdf-nav-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .page-input {
+    width: 52px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .pdf-container {
+    width: 94%;
+  }
+
+  .pdf-title {
+    font-size: 1.15rem;
+  }
+
+  .pdf-viewer-box {
+    padding: 14px;
+  }
+
+  .pdf-nav-btn {
+    padding: 7px 14px;
+  }
+}
+
+/* Laptops */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .pdf-container {
+    width: 92%;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+  .pdf-container {
+    max-width: 1200px;
+  }
+}
