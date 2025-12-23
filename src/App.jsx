@@ -8,6 +8,7 @@ import Subjects from "./pages/Subjects";
 import PapersPage from "./pages/PapersPage";
 import PDFViewerPage from "./pages/PDFViewerPage";
 import RequireAuth from "./auth/RequireAuth";
+import PrivacyPolicy from "./PrivacyPolicy";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 
@@ -19,17 +20,19 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
-        {/* All pages with Header, Navbar, Footer */}
+        {/* Public routes - Accessible without auth but with layout */}
         <Route element={<Layout />}>
-          {/* Home page */}
-          <Route path="/" element={<HomePage mode="degree" />} />
-
-          {/* Public page */}
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs/>}/>
+          <Route path="/contact" element={<ContactUs />} />
+        </Route>
 
-          {/* Protected routes */}
-          <Route element={<RequireAuth />}>
+        {/* Protected routes - Require authentication */}
+        <Route element={<RequireAuth />}>
+          <Route element={<Layout />}>
+            {/* Home */}
+            <Route path="/" element={<HomePage mode="degree" />} />
+
             {/* Branch */}
             <Route
               path="/degree/branch/:branchName"
