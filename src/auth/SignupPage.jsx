@@ -20,9 +20,9 @@ function SignupPage() {
       console.log("Google Signup:", result.user);
       navigate("/");
     } catch (error) {
-      console.log("Google Error:", error);
-      alert("Sign up failed. Please try again.");
-    }
+  console.error("Google Login Error:", error);
+  setError(error.message);
+}
   };
 
   // Show loading while checking auth state

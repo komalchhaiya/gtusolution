@@ -19,9 +19,9 @@ function LoginPage() {
       console.log("Google Login:", result.user);
       navigate("/");
     } catch (error) {
-      console.log("Google Login Error:", error);
-      alert("Login Failed. Please try again.");
-    }
+  console.error("Google Login Error:", error);
+  setError(error.message);
+}
   };
 
   if (loading) {
