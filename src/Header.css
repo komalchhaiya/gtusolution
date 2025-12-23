@@ -12,6 +12,7 @@
   box-sizing: border-box;
 }
 
+/* Logo */
 .header-logo {
   font-family: "Playfair Display", serif;
   color: #0c0b07;
@@ -21,13 +22,14 @@
   white-space: nowrap;
 }
 
+/* Navigation */
 .header-nav {
   display: flex;
-  gap: 1rem;
   align-items: center;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
+/* User Info */
 .header-user-info {
   display: flex;
   align-items: center;
@@ -40,9 +42,7 @@
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #6b533c;
-  flex-shrink: 0;
-  display: block;
-  background-color: #f4f0ec;
+  background: #f4f0ec;
 }
 
 .header-user-avatar-placeholder {
@@ -52,40 +52,30 @@
   background: #6b533c;
   color: white;
   font-weight: 600;
-  font-size: 1rem;
-  border: 2px solid #6b533c;
 }
 
 .header-user-name {
   color: #0c0b07;
   font-weight: 600;
   font-size: 0.95rem;
+  max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 150px;
 }
 
+/* Buttons */
 .header-btn {
   padding: 0.6rem 1rem;
+  border-radius: 8px;
   background: #6b533c;
   color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.9rem;
   border: none;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  white-space: nowrap;
+  text-decoration: none;
   font-weight: 500;
-}
-
-.header-btn-logout {
-  background: #6b533c;
-}
-
-.header-btn-login {
-  background: #6b533c;
 }
 
 .header-btn-signup {
@@ -97,7 +87,9 @@
   transform: translateY(-1px);
 }
 
-/* Tablet */
+/* ===================== */
+/* TABLET                */
+/* ===================== */
 @media (max-width: 768px) {
   .header {
     padding: 0.75rem 1rem;
@@ -107,23 +99,14 @@
     font-size: 1.25rem;
   }
 
-  .header-nav {
-    gap: 0.75rem;
-  }
-
   .header-btn {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.8rem;
     font-size: 0.85rem;
-  }
-
-  .header-user-info {
-    gap: 0.5rem;
   }
 
   .header-user-avatar {
     width: 36px;
     height: 36px;
-    font-size: 0.9rem;
   }
 
   .header-user-name {
@@ -132,63 +115,53 @@
   }
 }
 
-/* Mobile */
+/* ===================== */
+/* MOBILE                 */
+/* ===================== */
 @media (max-width: 480px) {
   .header {
-    padding: 0.75rem 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
   }
 
   .header-logo {
-    font-size: 1.1rem;
-    flex: 1;
-    min-width: 0;
+    text-align: center;
+    font-size: 1.15rem;
   }
 
   .header-nav {
-    gap: 0.5rem;
     width: 100%;
-    justify-content: flex-end;
-    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-user-name {
+    display: none;
   }
 
   .header-btn {
-    padding: 0.5rem 0.75rem;
+    padding: 0.45rem 0.7rem;
     font-size: 0.8rem;
-    flex: 1;
-    min-width: 80px;
+  }
+}
+
+/* ===================== */
+/* VERY SMALL DEVICES     */
+/* ===================== */
+@media (max-width: 360px) {
+  .header-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .header-btn {
+    width: 100%;
     text-align: center;
   }
 
   .header-user-info {
-    gap: 0.5rem;
-  }
-
-  .header-user-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
-  }
-
-  .header-user-name {
-    display: none; /* Hide email on very small screens */
+    justify-content: center;
   }
 }
-
-/* Very small mobile */
-@media (max-width: 360px) {
-  .header-logo {
-    font-size: 1rem;
-  }
-
-  .header-nav {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .header-btn {
-    width: 100%;
-  }
-}
-

@@ -1,66 +1,62 @@
+import React from "react";
+
 export default function ContactUs() {
   const styles = {
     container: {
-      maxWidth: "700px",
-      margin: "0 auto",
-      padding: "2rem 1rem",
+      maxWidth: "800px",
+      margin: "2rem auto",
+      padding: "0 1rem",
+      textAlign: "center",
       color: "#0c0b07",
     },
     title: {
       fontFamily: "Playfair Display",
-      fontSize: "2.4rem",
-      marginBottom: "1.5rem",
-      textAlign: "center",
-    },
-    formBox: {
-      backgroundColor: "#dbd4cb",
-      borderRadius: "14px",
-      padding: "2rem",
-      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-      border: "1px solid #b9a185",
-    },
-    input: {
-      width: "100%",
-      padding: "0.9rem",
+      fontSize: "2.6rem",
       marginBottom: "1rem",
-      borderRadius: "8px",
-      border: "1px solid #b9a185",
-      fontSize: "1rem",
-      backgroundColor: "#f4f0ec",
+      fontWeight: "700",
     },
-    textarea: {
-      width: "100%",
-      padding: "0.9rem",
-      height: "120px",
-      borderRadius: "8px",
-      border: "1px solid #b9a185",
-      fontSize: "1rem",
-      backgroundColor: "#f4f0ec",
-      marginBottom: "1.2rem",
+    subtitle: {
+      fontSize: "1.2rem",
+      color: "#6b533c",
+      marginBottom: "2rem",
+      lineHeight: "1.6",
     },
-    button: {
-      width: "100%",
-      padding: "0.9rem",
-      backgroundColor: "#6b533c",
-      color: "#fff",
-      border: "none",
-      borderRadius: "8px",
-      fontSize: "1rem",
-      fontWeight: "600",
-      cursor: "pointer",
+    emailBox: {
+      fontSize: "1.8rem",
+      fontWeight: "700",
+      color: "#1C352D",
+      backgroundColor: "#dbd4cb",
+      padding: "1rem 1.5rem",
+      borderRadius: "12px",
+      border: "2px solid #b9a185",
+      display: "inline-block",
+      margin: "1rem 0",
+    },
+    note: {
+      fontSize: "0.95rem",
+      color: "#6b533c",
+      marginTop: "1.5rem",
     },
   };
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Contact Us</h1>
+      <h1 style={styles.title}>Get in Touch</h1>
 
-      <div style={styles.formBox}>
-        <input type="text" placeholder="Your Name" style={styles.input} />
-        <input type="email" placeholder="Your Email" style={styles.input} />
-        <textarea placeholder="Your Message" style={styles.textarea}></textarea>
-        <button style={styles.button}>Send Message</button>
+      <p style={styles.subtitle}>
+        Whether you have questions, suggestions, or need support, we’re here to help!  
+        You can reach out to us anytime — we try to respond as quickly as possible.
+      </p>
+
+      <div style={styles.emailBox}>
+        <a href="mailto:your.email@gmail.com" style={{ textDecoration: "none", color: "inherit" }}>
+          gtupapersol@gmail.com
+        </a>
       </div>
+
+      <p style={styles.note}>
+        Please send us your queries, feedback, or requests — we value your thoughts and are committed to improving your experience on this platform.
+      </p>
     </div>
   );
 }
