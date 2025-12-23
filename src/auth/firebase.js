@@ -29,6 +29,10 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
+// Add scopes to get user profile information including photo
+googleProvider.addScope('profile');
+googleProvider.addScope('email');
+
 //export login function with google
 export const loginWithGoogle = ()=>{
     return signInWithPopup(auth , googleProvider)

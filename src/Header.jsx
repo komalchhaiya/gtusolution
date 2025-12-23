@@ -1,61 +1,58 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./auth/AuthContext";
+import "./Header.css";
 
 function Header() {
   const { user, logout } = useContext(AuthContext);
+  const [imageError, setImageError] = useState(false);
+
+  // Reset image error when user changes
+  useEffect(() => {
+    setImageError(false);
+  }, [user?.photoURL]);
 
   return (
-    <header
-      style={{
-        padding: "1rem 2rem",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        position: "sticky",
-        top: 0,
-        background: "#dbd4cb",
-        borderBottom: "1px solid #b9a185",
-        zIndex: 10,
-      }}
-    >
+    <header className="header">
       {/* Logo */}
-      <h2
-        style={{
-          fontFamily: "Playfair Display",
-          color: "#0c0b07",
-          letterSpacing: "0.5px",
-        }}
-      >
+      <h2 className="header-logo">
         GTUpapers
       </h2>
 
       {/* Right Side Navigation */}
-      <nav style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-
-        {/* IF USER LOGGED IN → show name + logout */}
+      <nav className="header-nav">
+        {/* IF USER LOGGED IN → show profile pic + name + logout */}
         {user ? (
           <>
-            <span
-              style={{
-                color: "#0c0b07",
-                fontWeight: "600",
-                fontSize: "0.95rem",
-              }}
-            >
-                 </span>
+            <div className="header-user-info">
+              {user.photoURL && !imageError ? (
+                <img 
+                  src={user.photoURL} 
+                  alt="Profile" 
+                  className="header-user-avatar"
+                  referrerPolicy="no-referrer"
+                  loading="lazy"
+                  onError={(e) => {
+                    console.log('Image failed to load, showing placeholder');
+                    setImageError(true);
+                  }}
+                  onLoad={() => {
+                    console.log('Image loaded successfully');
+                  }}
+                />
+              ) : (
+                <div className="header-user-avatar header-user-avatar-placeholder">
+                  {user.email ? user.email.charAt(0).toUpperCase() : 'U'}
+                </div>
+              )}
+              <span className="header-user-name">
+                {user.email}
+              </span>
+            </div>
 
             <button
               onClick={logout}
-              style={{
-                padding: "0.6rem 1rem",
-                background: "#6b533c",
-                color: "white",
-                borderRadius: "8px",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "0.9rem",
-              }}
+              className="header-btn header-btn-logout"
             >
               Logout
             </button>
@@ -65,28 +62,14 @@ function Header() {
             {/* IF NOT LOGGED IN → show login/signup */}
             <Link
               to="/login"
-              style={{
-                padding: "0.6rem 1rem",
-                background: "#6b533c",
-                color: "white",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontSize: "0.9rem",
-              }}
+              className="header-btn header-btn-login"
             >
               Login
             </Link>
 
             <Link
               to="/signup"
-              style={{
-                padding: "0.6rem 1rem",
-                background: "#0c0b07",
-                color: "white",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontSize: "0.9rem",
-              }}
+              className="header-btn header-btn-signup"
             >
               Sign Up
             </Link>

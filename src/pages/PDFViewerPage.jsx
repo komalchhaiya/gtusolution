@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useState, useEffect, useRef } from "react";
 import "./PDFViewerPage.css";
@@ -7,16 +7,27 @@ pdfjs.GlobalWorkerOptions.workerSrc =
   new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
 
 function PDFViewerPage() {
-  const { mode, branchName, semId, subId, pageNo } = useParams();
+  const { mode, branchName, semId, subjectId, pageNo } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const containerRef = useRef(null);
 
-  const pdfUrl = `/pdfs/${subId}.pdf`;
   const currentPage = parseInt(pageNo) || 1;
 
+  // Store PDF URL in state so it persists across page navigations
+  const [pdfUrl, setPdfUrl] = useState(() => {
+    return location.state?.pdfUrl || `/pdfs/${subjectId}.pdf`;
+  });
   const [numPages, setNumPages] = useState(null);
   const [error, setError] = useState(null);
   const [width, setWidth] = useState(900);
+
+  // Update PDF URL if it comes from navigation state
+  useEffect(() => {
+    if (location.state?.pdfUrl) {
+      setPdfUrl(location.state.pdfUrl);
+    }
+  }, [location.state]);
 
   function onLoadSuccess(data) {
     setNumPages(data.numPages);
@@ -24,8 +35,8 @@ function PDFViewerPage() {
 
     if (currentPage < 1 || currentPage > data.numPages) {
       navigate(
-        `/${mode}/branch/${branchName}/semester/${semId}/subject/${subId}/page/1`,
-        { replace: true }
+        `/${mode}/branch/${branchName}/semester/${semId}/subject/${subjectId}/view/page/1`,
+        { replace: true, state: { pdfUrl } }
       );
     }
   }
@@ -38,7 +49,8 @@ function PDFViewerPage() {
     const p = parseInt(page);
     if (p >= 1 && p <= numPages) {
       navigate(
-        `/${mode}/branch/${branchName}/semester/${semId}/subject/${subId}/page/${p}`
+        `/${mode}/branch/${branchName}/semester/${semId}/subject/${subjectId}/view/page/${p}`,
+        { state: { pdfUrl } }
       );
     }
   }
@@ -46,21 +58,27 @@ function PDFViewerPage() {
   useEffect(function () {
     function resize() {
       if (containerRef.current) {
-        setWidth(containerRef.current.offsetWidth - 20);
+        const containerWidth = containerRef.current.offsetWidth;
+        // Adjust padding based on screen size
+        const padding = window.innerWidth <= 480 ? 16 : window.innerWidth <= 768 ? 28 : 36;
+        setWidth(Math.max(containerWidth - padding, 300)); // Minimum width of 300px
       }
     }
 
     resize();
     window.addEventListener("resize", resize);
+    // Also listen to orientation changes on mobile
+    window.addEventListener("orientationchange", resize);
     return function () {
       window.removeEventListener("resize", resize);
+      window.removeEventListener("orientationchange", resize);
     };
   }, []);
 
   return (
     <div className="pdf-page-wrap">
       <div className="pdf-container" ref={containerRef}>
-        <h1 className="pdf-title">{subId} PDF Solution</h1>
+        <h1 className="pdf-title">{subjectId || 'PDF'} Solution</h1>
 
         <div className="pdf-viewer-box">
           {error ? (
