@@ -1,17 +1,10 @@
 import React from "react";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <footer
-      style={{
-        padding: "2rem",
-        background: "var(--ebony)",
-        color: "var(--isabelline)",
-        textAlign: "center",
-        marginTop: "2rem",
-      }}
-    >
-      <p>© {new Date().getFullYear()} GTUpapers — All Rights Reserved</p>
+    <footer className="footer">
+      <p className="footer-text">© {new Date().getFullYear()} GTUpapers — All Rights Reserved</p>
     </footer>
   );
 }

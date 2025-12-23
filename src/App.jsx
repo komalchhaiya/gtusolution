@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./HomePage";
 import BranchSemesterPage from "./pages/BranchSemesterPage";
 import Layout from "./Layout";
@@ -7,34 +7,37 @@ import SignupPage from "./auth/SignupPage";
 import Subjects from "./pages/Subjects";
 import PapersPage from "./pages/PapersPage";
 import PDFViewerPage from "./pages/PDFViewerPage";
-import AboutUs from "./AboutUs";
-import ContactUs from "./ContactUs";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
+        {/* Public routes - Auth pages */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
-          {/* Home */}
-          <Route path="/" element={<HomePage mode="degree" />} />
+        {/* Protected routes - Require authentication */}
+        <Route element={<RequireAuth />}>
+          <Route element={<Layout />}>
+            {/* Home */}
+            <Route path="/" element={<HomePage mode="degree" />} />
 
-          {/* Branch */}
-          <Route
-            path="/degree/branch/:branchName"
-            element={<BranchSemesterPage />}
-          />
+            {/* Branch */}
+            <Route
+              path="/degree/branch/:branchName"
+              element={<BranchSemesterPage />}
+            />
 
-          {/* Subjects */}
-          <Route
-  path="/:mode/branch/:branchName/semester/:semId"
-  element={<Subjects />}
-/>
+            {/* Subjects */}
+            <Route
+              path="/:mode/branch/:branchName/semester/:semId"
+              element={<Subjects />}
+            />
 
-<Route
-  path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId"
-  element={<PapersPage />}
-/>
+            <Route
+              path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId"
+              element={<PapersPage />}
+            />
 
 <Route
   path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId/view"
@@ -42,19 +45,10 @@ function App() {
 />
 
 
-
-
-<Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
-        
-
-
         </Route>
 
-        {/* Auth */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        {/* Fallback - redirect to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
