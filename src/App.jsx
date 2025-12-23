@@ -7,6 +7,8 @@ import SignupPage from "./auth/SignupPage";
 import Subjects from "./pages/Subjects";
 import PapersPage from "./pages/PapersPage";
 import PDFViewerPage from "./pages/PDFViewerPage";
+import AboutUs from "./AboutUs";
+import ContactUs from "./ContactUs";
 
 function App() {
   return (
@@ -38,6 +40,14 @@ function App() {
   path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId/view"
   element={<PDFViewerPage />}
 />
+
+
+
+
+<Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
+        
 
 
         </Route>
