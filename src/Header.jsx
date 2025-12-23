@@ -16,8 +16,13 @@ function Header() {
     <header className="header">
       {/* Logo */}
       <h2 className="header-logo">
-        GTUpapers
-      </h2>
+  <span className="logo-main">GTU</span>
+  <span className="logo-stack">
+    <span className="logo-paper">Paper</span>
+    <span className="logo-solution">Solution</span>
+  </span>
+</h2>
+
 
       {/* Right Side Navigation */}
       <nav className="header-nav">

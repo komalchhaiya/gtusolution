@@ -19,7 +19,7 @@ function HomePage() {
   return (
     <main className="main-content">
       <section className="section hero">
-        <h1>GTU Degree Papers</h1>
+        <h1>GTU Degree Paper Solutions</h1>
         <p>Your smart destination for previous year papers.</p>
       </section>
 

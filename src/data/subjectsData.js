@@ -3,7 +3,7 @@ const subjectsData = {
     "computer-engineering": {
       1: {
         DBMS: {
-          name: "dbms",
+          name: "Dbms",
           papers: [
              {
               title: "Summer 2025",
