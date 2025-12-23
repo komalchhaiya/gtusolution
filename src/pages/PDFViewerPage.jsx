@@ -3,7 +3,8 @@ import { Document, Page, pdfjs } from "react-pdf";
 import { useState, useEffect, useRef } from "react";
 import "./PDFViewerPage.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+pdfjs.GlobalWorkerOptions.workerSrc =
+  new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
 
 function PDFViewerPage() {
   const { mode, branchName, semId, subId, pageNo } = useParams();

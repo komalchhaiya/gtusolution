@@ -63,13 +63,11 @@ body.dark-mode {
   padding: 2rem 0;
 }
 
-
 /* Page title spacing - FIX SUBJECT PAGE TOP GAP */
 .page-title {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
 
 /* ------------------------------
    TYPOGRAPHY
@@ -120,13 +118,24 @@ p {
 }
 
 /* ------------------------------
-   CARD COMPONENT
+   CARD COMPONENT (SUBJECTS + PAPERS)
 ------------------------------ */
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
 .card {
   border-radius: 12px;
   padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
   transition: var(--transition);
   background-color: #dbd1d1;
+  color: #0c0b07;
 }
 
 .light-mode .card {
@@ -136,6 +145,7 @@ p {
 
 .dark-mode .card {
   background-color: #2a4a3e;
+  color: #f4f0ec;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -146,6 +156,12 @@ p {
 
 .dark-mode .card:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Make <Link> look like a card */
+.card-link {
+  text-decoration: none;
+  display: block;
 }
 
 /* ------------------------------
@@ -177,7 +193,7 @@ p {
 .btn-secondary {
   background-color: rgb(196, 196, 196);
   border: 2px solid var(--jungle-green);
-  color:black;
+  color: black;
 }
 
 .dark-mode .btn-secondary {
@@ -285,10 +301,10 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 /* ===================== */
 /* AUTH PAGE STYLING     */
 /* ===================== */
-
 .auth-container {
   display: flex;
   justify-content: center;
@@ -379,4 +395,161 @@ p {
 .auth-footer-text a {
   color: #0c0b07;
   text-decoration: underline;
+}
+
+
+/* responsive */
+/* ------------------------------
+   SEMESTER CARDS (with button inside)
+------------------------------ */
+.semester-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-top: 2rem;
+}
+
+.semester-card {
+  background-color: #dbd1d1; /* light card */
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.light-mode .semester-card {
+  background-color: rgb(219, 209, 209);
+  box-shadow: 0 4px 20px rgba(28, 53, 45, 0.08);
+}
+
+.dark-mode .semester-card {
+  background-color: #2a4a3e;
+  color: #f4f0ec;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.semester-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(28, 53, 45, 0.15);
+}
+
+.dark-mode .semester-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.semester-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.semester-card .btn-open {
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background-color: #1c352d; /* jungle green */
+  color: #f4f0ec;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.semester-card .btn-open:hover {
+  background-color: #264a3e;
+  transform: translateY(-2px);
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 768px) {
+  .semester-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .semester-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .semester-card h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ------------------------------
+   CARDS WITH BUTTON (Subjects & Papers)
+------------------------------ */
+.card-grid .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: #dbd1d1;
+  color: #0c0b07;
+}
+
+.light-mode .card-grid .card {
+  background-color: rgb(219, 209, 209);
+  box-shadow: 0 4px 20px rgba(28, 53, 45, 0.08);
+}
+
+.dark-mode .card-grid .card {
+  background-color: #2a4a3e;
+  color: #f4f0ec;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-grid .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(28, 53, 45, 0.15);
+}
+
+.dark-mode .card-grid .card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-grid .card h2 {
+  margin-bottom: 1rem;
+}
+
+.card-grid .card .btn-open {
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background-color: #1c352d; /* jungle green */
+  color: #f4f0ec;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.card-grid .card .btn-open:hover {
+  background-color: #264a3e;
+  transform: translateY(-2px);
+}
+
+/* Responsive for cards */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-grid .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .card-grid .card h2 {
+    font-size: 1.3rem;
+  }
 }

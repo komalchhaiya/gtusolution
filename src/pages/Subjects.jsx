@@ -1,30 +1,28 @@
 import { useParams, useNavigate } from "react-router-dom";
 import subjectsData from "../data/subjectsData";
 
-function Subjects() {
-  const { mode, semId, branchName } = useParams();
+export default function Subjects() {
+  const { mode, branchName, semId } = useParams();
   const navigate = useNavigate();
 
-  const subjects = subjectsData[mode]?.[branchName]?.[semId] || [];
+  const subjects =
+    subjectsData?.[mode]?.[branchName]?.[Number(semId)];
+
+  if (!subjects) {
+    return <h2>No subjects found</h2>;
+  }
 
   return (
     <div className="main-content">
-      <h1>
-        {mode.toUpperCase()} – {branchName.replace("-", " ").toUpperCase()} – Semester {semId}
-      </h1>
+      <h1>Subjects</h1>
 
-      <div className="grid grid-3">
-        {subjects.map((sub, i) => (
-          <div key={i} className="card">
-            <h3>{sub.name}</h3>
-
+      <div className="card-grid">
+        {Object.entries(subjects).map(([subjectId, subject]) => (
+          <div key={subjectId} className="card">
+            <h2>{subject.name}</h2>
             <button
-              className="btn btn-primary"
-              onClick={() =>
-                navigate(
-                  `/${mode}/branch/${branchName}/semester/${semId}/subject/${sub.pdf.replace(".pdf", "")}`
-                )
-              }
+              className="btn-open"
+              onClick={() => navigate(`subject/${subjectId}`)}
             >
               Open
             </button>
@@ -34,5 +32,3 @@ function Subjects() {
     </div>
   );
 }
-
-export default Subjects;
