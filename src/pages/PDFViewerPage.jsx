@@ -1,6 +1,7 @@
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useState, useEffect, useRef } from "react";
+import subjectsData from "../data/subjectsData";
 import "./PDFViewerPage.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc =
@@ -14,20 +15,35 @@ function PDFViewerPage() {
 
   const currentPage = parseInt(pageNo) || 1;
 
-  // Store PDF URL in state so it persists across page navigations
-  const [pdfUrl, setPdfUrl] = useState(() => {
-    return location.state?.pdfUrl || `/pdfs/${subjectId}.pdf`;
-  });
+  // Get PDF URL from navigation state, or fallback to first paper from data
+  const getPdfUrl = () => {
+    // First, try to get from navigation state
+    if (location.state?.pdfUrl) {
+      return location.state.pdfUrl;
+    }
+    
+    // If not in state, try to get from subjectsData
+    const subject = subjectsData?.[mode]?.[branchName]?.[Number(semId)]?.[subjectId];
+    if (subject && subject.papers && subject.papers.length > 0) {
+      return subject.papers[0].pdf; // Use first paper as default
+    }
+    
+    // Final fallback
+    return `/pdfs/${subjectId}.pdf`;
+  };
+
+  const [pdfUrl, setPdfUrl] = useState(() => getPdfUrl());
   const [numPages, setNumPages] = useState(null);
   const [error, setError] = useState(null);
   const [width, setWidth] = useState(900);
 
-  // Update PDF URL if it comes from navigation state
+  // Update PDF URL if it comes from navigation state or if route params change
   useEffect(() => {
-    if (location.state?.pdfUrl) {
-      setPdfUrl(location.state.pdfUrl);
-    }
-  }, [location.state]);
+    const newPdfUrl = getPdfUrl();
+    setPdfUrl(newPdfUrl);
+    setError(null); // Reset error when URL changes
+    setNumPages(null); // Reset page count
+  }, [location.state?.pdfUrl, mode, branchName, semId, subjectId]);
 
   function onLoadSuccess(data) {
     setNumPages(data.numPages);
