@@ -10,7 +10,8 @@ function BranchSemesterPage() {
     
     "Semester 3",
     "Semester 4",
-    
+    "Semester 5",
+    "Semester 6"
   ];
 
   const readable = branchName.replace(/-/g, " ");

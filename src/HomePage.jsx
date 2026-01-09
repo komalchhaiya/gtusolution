@@ -285,7 +285,7 @@ function HomePage() {
       {/* Hero Banner with rotating background effect */}
       <section className="hero-banner">
         <div className="hero-content">
-          <h1>GTU Degree Paper Solutions</h1>
+          <h1>GTU Paper Solutions</h1>
           <p>
             Your smart destination for previous year question papers — organized, accessible, and designed to help you excel.
           </p>
@@ -298,7 +298,24 @@ function HomePage() {
           </div>
         </div>
       </section>
+  <section className="branches-section">
+        <h2>Explore Popular Branches</h2>
+        <div className="branches-grid">
+          {branches.map((branch, i) => (
+            <div
+              key={i}
+              className="branch-card"
+              onClick={() => navigate("/degree/branch/" + branch)}
+            >
+              <h3>{readable(branch)}</h3>
+              <button className="explore-btn">Explore Papers →</button>
+            </div>
+          ))}
+        </div>
 
+        
+        
+      </section>
       {/* About Section */}
       <section className="about-section">
         <p>
@@ -332,24 +349,7 @@ function HomePage() {
       </section>
 
       {/* Popular Branches */}
-      <section className="branches-section">
-        <h2>Explore Popular Branches</h2>
-        <div className="branches-grid">
-          {branches.map((branch, i) => (
-            <div
-              key={i}
-              className="branch-card"
-              onClick={() => navigate("/degree/branch/" + branch)}
-            >
-              <h3>{readable(branch)}</h3>
-              <button className="explore-btn">Explore Papers →</button>
-            </div>
-          ))}
-        </div>
-
-        
-        
-      </section>
+    
     </div>
   );
 }

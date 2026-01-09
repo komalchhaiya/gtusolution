@@ -37,7 +37,7 @@ const subjectsData = {
           ],
         },
          IC: {
-          name: "IC",
+          name: "Indian Constitution",
           papers: [
             {
               title: "Summer 2025",
@@ -57,7 +57,7 @@ const subjectsData = {
       },
       2: {
         pem: {
-          name: "pem",
+          name: "Pem",
           papers: [
              {
               title: "Summer 2025",
@@ -118,7 +118,75 @@ const subjectsData = {
           ],
         },
       },
-      
+
+
+
+       3: {
+        ADA: {
+          name: "ADA",
+          papers: [
+             {
+              title: "Summer 2025",
+              pdf: "/pdfs/sem-5/ADA/ADAsum2025.pdf",
+            },
+            {
+              title: "Winter 2024",
+              pdf: "/pdfs/sem-5/ADA/ADAwin2024.pdf",
+            },
+            {
+              title: "Summer 2024",
+              pdf: "/pdfs/sem-5/ADA/ADAsum2024.pdf",
+            },
+          ],
+        },
+        PE: {
+          name: "Professional Ethics",
+          papers: [
+          
+            {
+              title: "Winter 2025",
+              pdf: "/pdfs/sem-5/PE/PEwin2025.pdf",
+            },
+          ],
+        },
+         
+      },
+
+ 4: {
+        AJP: {
+          name: "AJP",
+          papers: [
+             {
+              title: "Winter 2025",
+              pdf: "/pdfs/sem-6/ajp/ajpwin2025.pdf",
+            }
+          ],
+        },
+        WP: {
+          name: "Web Programming",
+          papers: [
+            {
+              title: "Summer 2025",
+              pdf: "/pdfs/sem-6/wp/wpsum2025.pdf",
+            },
+            {
+              title: "Winter 2024",
+              pdf: "/pdfs/sem-6/wp/wpwin2024.pdf",
+            },
+            {
+              title: "Summer 2024",
+              pdf: "/pdfs/sem-6/wp/wp2024sum.pdf",
+            },
+          ],
+        },
+         
+        
+      },
+
+
+
+
+
     },
   },
 };
