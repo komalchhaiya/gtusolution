@@ -1,14 +1,14 @@
-// Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs
 import { initializeApp } from "firebase/app";
 import {
-    getAuth , GoogleAuthProvider, signOut, signInWithPopup , createUserWithEmailAndPassword , signInWithEmailAndPassword
-
-} from 'firebase/auth';
-
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,31 +17,35 @@ const firebaseConfig = {
   projectId: "gtu-solution",
   storageBucket: "gtu-solution.firebasestorage.app",
   messagingSenderId: "658478369866",
-  appId: "1:658478369866:web:3253493605177ca1b86ab3"
+  appId: "1:658478369866:web:3253493605177ca1b86ab3",
 };
 
+// ✅ Initialize Firebase FIRST
+export const app = initializeApp(firebaseConfig);
 
+// ✅ Initialize Analytics AFTER app
+export const analytics = getAnalytics(app);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-//initialize auth+ google provider
+// ✅ Initialize Auth
 export const auth = getAuth(app);
+
+// ✅ Google Provider
 export const googleProvider = new GoogleAuthProvider();
+googleProvider.addScope("profile");
+googleProvider.addScope("email");
 
-// Add scopes to get user profile information including photo
-googleProvider.addScope('profile');
-googleProvider.addScope('email');
-
-//export login function with google
-export const loginWithGoogle = ()=>{
-    return signInWithPopup(auth , googleProvider)
+// ✅ Google Login
+export const loginWithGoogle = () => {
+  return signInWithPopup(auth, googleProvider);
 };
 
-// Email + Password Signup
+// ✅ Email + Password Signup
 export const signupWithEmail = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password);
 
-// Email + Password Login
+// ✅ Email + Password Login
 export const loginWithEmail = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
+
+// ✅ Logout
+export const logoutUser = () => signOut(auth);

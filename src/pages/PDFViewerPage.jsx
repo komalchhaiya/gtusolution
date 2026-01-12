@@ -4,6 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import subjectsData from "../data/subjectsData";
 import "./PDFViewerPage.css";
 
+/* 🔹 ANALYTICS IMPORTS (ADDED ONLY) */
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../auth/firebase";
+
 pdfjs.GlobalWorkerOptions.workerSrc =
   new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
 
@@ -17,18 +21,16 @@ function PDFViewerPage() {
 
   // Get PDF URL from navigation state, or fallback to first paper from data
   const getPdfUrl = () => {
-    // First, try to get from navigation state
     if (location.state?.pdfUrl) {
       return location.state.pdfUrl;
     }
-    
-    // If not in state, try to get from subjectsData
-    const subject = subjectsData?.[mode]?.[branchName]?.[Number(semId)]?.[subjectId];
+
+    const subject =
+      subjectsData?.[mode]?.[branchName]?.[Number(semId)]?.[subjectId];
     if (subject && subject.papers && subject.papers.length > 0) {
-      return subject.papers[0].pdf; // Use first paper as default
+      return subject.papers[0].pdf;
     }
-    
-    // Final fallback
+
     return `/pdfs/${subjectId}.pdf`;
   };
 
@@ -37,15 +39,23 @@ function PDFViewerPage() {
   const [error, setError] = useState(null);
   const [width, setWidth] = useState(900);
 
-  // Update PDF URL if it comes from navigation state or if route params change
   useEffect(() => {
     const newPdfUrl = getPdfUrl();
     setPdfUrl(newPdfUrl);
-    setError(null); // Reset error when URL changes
-    setNumPages(null); // Reset page count
+    setError(null);
+    setNumPages(null);
   }, [location.state?.pdfUrl, mode, branchName, semId, subjectId]);
 
   function onLoadSuccess(data) {
+    /* 🔹 ANALYTICS: PDF OPEN */
+    logEvent(analytics, "pdf_open", {
+      mode: mode,
+      branch: branchName,
+      semester: semId,
+      subject: subjectId,
+      total_pages: data.numPages,
+    });
+
     setNumPages(data.numPages);
     setError(null);
 
@@ -64,6 +74,14 @@ function PDFViewerPage() {
   function goToPage(page) {
     const p = parseInt(page);
     if (p >= 1 && p <= numPages) {
+
+      /* 🔹 ANALYTICS: PAGE CHANGE */
+      logEvent(analytics, "pdf_page_change", {
+        subject: subjectId,
+        page_number: p,
+        total_pages: numPages,
+      });
+
       navigate(
         `/${mode}/branch/${branchName}/semester/${semId}/subject/${subjectId}/view/page/${p}`,
         { state: { pdfUrl } }
@@ -75,15 +93,14 @@ function PDFViewerPage() {
     function resize() {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        // Adjust padding based on screen size
-        const padding = window.innerWidth <= 480 ? 16 : window.innerWidth <= 768 ? 28 : 36;
-        setWidth(Math.max(containerWidth - padding, 300)); // Minimum width of 300px
+        const padding =
+          window.innerWidth <= 480 ? 16 : window.innerWidth <= 768 ? 28 : 36;
+        setWidth(Math.max(containerWidth - padding, 300));
       }
     }
 
     resize();
     window.addEventListener("resize", resize);
-    // Also listen to orientation changes on mobile
     window.addEventListener("orientationchange", resize);
     return function () {
       window.removeEventListener("resize", resize);
@@ -94,7 +111,7 @@ function PDFViewerPage() {
   return (
     <div className="pdf-page-wrap">
       <div className="pdf-container" ref={containerRef}>
-        <h1 className="pdf-title">{subjectId || 'PDF'} Solution</h1>
+        <h1 className="pdf-title">{subjectId || "PDF"} Solution</h1>
 
         <div className="pdf-viewer-box">
           {error ? (

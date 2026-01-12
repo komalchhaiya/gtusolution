@@ -11,10 +11,12 @@ import RequireAuth from "./auth/RequireAuth";
 import PrivacyPolicy from "./PrivacyPolicy";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
+import AnalyticsTracker from "./auth/AnalyticsTracker";
 
 function App() {
   return (
     <BrowserRouter>
+    <AnalyticsTracker/>
       <Routes>
         {/* Public routes - Auth pages */}
         <Route path="/login" element={<LoginPage />} />

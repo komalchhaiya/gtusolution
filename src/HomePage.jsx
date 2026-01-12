@@ -13,7 +13,7 @@ function HomePage() {
   return (
     <div className="home-container">
       {/* Inline CSS - All styling is internal to this component */}
-      <style jsx>{`
+      <style>{`
         .home-container {
           min-height: 100vh;
           background: linear-gradient(135deg, #f4f0ec 0%, #ffffff 70%);

@@ -1,6 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import subjectsData from "../data/subjectsData";
 
+/* 🔹 ANALYTICS IMPORTS (ADDED ONLY) */
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../firebase";
+
 function SubjectDetails() {
   const { branchName, semId, subId } = useParams();
   const navigate = useNavigate();
@@ -29,6 +33,14 @@ function SubjectDetails() {
         <button
           className="btn btn-primary"
           onClick={function () {
+
+            /* 🔹 ANALYTICS: SUBJECT PDF VIEW CLICK */
+            logEvent(analytics, "subject_pdf_open", {
+              branch: branchName,
+              semester: semId,
+              subject: subject.name,
+            });
+
             navigate(
               "/degree/branch/" +
                 branchName +
