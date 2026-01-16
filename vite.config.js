@@ -9,7 +9,7 @@ export default defineConfig({
   },
   build: {
     // Optimize for production
-    minify: 'terser',
+    minify: 'esbuild', // Changed from 'terser' to 'esbuild' (built-in, no extra dependency)
     rollupOptions: {
       output: {
         manualChunks: {
