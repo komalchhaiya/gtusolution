@@ -1,1 +1,6 @@
+# Static files - these should be served directly (no redirect needed)
+# Netlify automatically serves files from public folder
+
+# Redirect all other routes to index.html for React Router
+# This allows React Router to handle client-side routing
 /*    /index.html   200
