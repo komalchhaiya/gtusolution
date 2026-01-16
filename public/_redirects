@@ -1,6 +1,7 @@
-# Static files - these should be served directly (no redirect needed)
-# Netlify automatically serves files from public folder
+# IMPORTANT: Netlify serves static files from public/ folder BEFORE checking redirects
+# This means ads.txt, robots.txt, sitemap.xml are ALWAYS served directly
+# The catch-all redirect below only applies to routes that don't match actual files
 
-# Redirect all other routes to index.html for React Router
-# This allows React Router to handle client-side routing
+# Redirect all routes to index.html for React Router (SPA routing)
+# Static files (ads.txt, robots.txt, sitemap.xml, PDFs) are served first automatically
 /*    /index.html   200
