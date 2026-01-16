@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "./components/SEO";
 
 export default function ContactUs() {
   const styles = {
@@ -40,6 +41,13 @@ export default function ContactUs() {
   };
 
   return (
+    <>
+      <SEO 
+        title="Contact Us - GTU Paper Solution"
+        description="Contact GTU Paper Solution for questions, suggestions, or support. Reach out to us at gtupapersol@gmail.com for any queries about GTU previous year papers."
+        keywords="GTU paper solution contact, GTU papers support, GTU question papers help"
+        canonical="https://gtusolution.com/contact"
+      />
     <div style={styles.container}>
       <h1 style={styles.title}>Get in Touch</h1>
 
@@ -58,5 +66,6 @@ export default function ContactUs() {
         Please send us your queries, feedback, or requests — we value your thoughts and are committed to improving your experience on this platform.
       </p>
     </div>
+    </>
   );
 }

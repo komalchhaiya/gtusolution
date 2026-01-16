@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import './App.css'
+import SEO from "./components/SEO";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -11,6 +12,13 @@ function HomePage() {
     text.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
   return (
+    <>
+      <SEO 
+        title="GTU Paper Solution - Previous Year Question Papers with Solutions"
+        description="Access GTU previous year question papers with solutions organized by branch and semester. Free PDF viewer for DBMS, Data Structure, Operating System, OOP, and more. Perfect for GTU exam preparation."
+        keywords="GTU papers with solutions, GTU previous year papers with solutions, GTU question papers with solutions, GTU paper solution, GTU solved papers, Gujarat Technological University papers with solutions, GTU DBMS papers with solutions, GTU Data Structure papers with solutions, GTU OS papers with solutions, GTU OOP papers with solutions"
+        canonical="https://gtusolution.com/"
+      />
     <div className="home-container">
       {/* Inline CSS - All styling is internal to this component */}
       <style>{`
@@ -351,6 +359,7 @@ function HomePage() {
       {/* Popular Branches */}
     
     </div>
+    </>
   );
 }
 
