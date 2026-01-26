@@ -2,15 +2,21 @@
 
 User-agent: *
 Allow: /
+
+# Block sensitive pages only
 Disallow: /login
 Disallow: /signup
 Disallow: /api/
 
-# Allow all PDFs
+# Explicitly allow important content
 Allow: /pdfs/
+Allow: /degree/
+Allow: /about
+Allow: /contact
+Allow: /privacy
 
-# Sitemap location
-Sitemap: https://gtusolution.com/sitemap.xml
+# Sitemap location (relative URL works for all domains)
+Sitemap: https://gtupapersolution.co.in/sitemap.xml
 
 # Crawl-delay (optional, helps prevent server overload)
 Crawl-delay: 1
