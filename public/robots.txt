@@ -8,6 +8,10 @@ Disallow: /login
 Disallow: /signup
 Disallow: /api/
 
+# Block PDF viewer pages - no ads allowed here
+Disallow: /*/view
+Disallow: /*/view/page/
+
 # Explicitly allow important content
 Allow: /pdfs/
 Allow: /degree/
@@ -15,8 +19,8 @@ Allow: /about
 Allow: /contact
 Allow: /privacy
 
-# Sitemap location (relative URL works for all domains)
+# Sitemap location
 Sitemap: https://gtupapersolution.co.in/sitemap.xml
 
-# Crawl-delay (optional, helps prevent server overload)
+# Crawl-delay
 Crawl-delay: 1

@@ -16,47 +16,40 @@ import AnalyticsTracker from "./auth/AnalyticsTracker";
 function App() {
   return (
     <BrowserRouter>
-    <AnalyticsTracker/>
+      <AnalyticsTracker />
       <Routes>
-        {/* Public routes - Auth pages */}
+        {/* Auth pages - no layout */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
-        {/* Public routes - Accessible without auth but with layout */}
+        {/* ✅ PUBLIC routes - Google AdSense crawlers can access these */}
         <Route element={<Layout />}>
+          <Route path="/" element={<HomePage mode="degree" />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
         </Route>
 
-        {/* Protected routes - Require authentication */}
+        {/* 🔒 PROTECTED routes - Require login */}
         <Route element={<RequireAuth />}>
           <Route element={<Layout />}>
-            {/* Home */}
-            <Route path="/" element={<HomePage mode="degree" />} />
-
-            {/* Branch */}
             <Route
               path="/degree/branch/:branchName"
               element={<BranchSemesterPage />}
             />
-
-            {/* Subjects */}
             <Route
               path="/:mode/branch/:branchName/semester/:semId"
               element={<Subjects />}
             />
-
             <Route
               path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId"
               element={<PapersPage />}
             />
-
+            {/* ✅ NO ADS should be placed in PDFViewerPage */}
             <Route
               path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId/view"
               element={<PDFViewerPage />}
             />
-
             <Route
               path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId/view/page/:pageNo"
               element={<PDFViewerPage />}
@@ -64,7 +57,6 @@ function App() {
           </Route>
         </Route>
 
-        {/* Fallback - redirect to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

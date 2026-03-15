@@ -1,0 +1,7 @@
+# Block ads and indexing on PDF viewer pages
+/*/view
+  X-Robots-Tag: noindex, nofollow
+
+/*/view/page/*
+  X-Robots-Tag: noindex, nofollow
+  
