@@ -30,7 +30,14 @@ function BranchSemesterPage() {
   return (
     <main className="main-content">
       <h1>{readable.toUpperCase()}</h1>
-      <p>Select a semester</p>
+      <p>
+        Browse previous year GTU question papers with solutions for {readable} branch.
+        Select a semester below to find subject-wise solved papers for your GTU exam preparation.
+      </p>
+      <p style={{ color: "#6b533c", fontSize: "0.95rem", marginBottom: "1.5rem" }}>
+        All papers are organized semester-wise and subject-wise to help you study 
+        efficiently and score better in your GTU examinations.
+      </p>
 
       <div className="grid grid-4">
         {semesters.map(function (s, i) {
