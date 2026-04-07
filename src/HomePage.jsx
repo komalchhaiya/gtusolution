@@ -288,6 +288,65 @@ function HomePage() {
             font-size: 2.2rem;
           }
         }
+
+        .content-guide {
+          max-width: 920px;
+          margin: 3rem auto 4rem;
+          padding: 2.5rem 2rem;
+          background: #ffffff;
+          border-radius: 20px;
+          box-shadow: 0 12px 32px rgba(28,53,45,0.08);
+          border: 1px solid rgba(28,53,45,0.12);
+        }
+
+        .dark-mode .content-guide {
+          background: #1a2f28;
+          border-color: rgba(244,240,236,0.15);
+        }
+
+        .content-guide h2 {
+          font-family: 'Playfair Display', serif;
+          font-size: 2rem;
+          color: #1C352D;
+          margin: 0 0 1.25rem;
+          text-align: center;
+        }
+
+        .dark-mode .content-guide h2 {
+          color: #F4F0EC;
+        }
+
+        .content-guide h3 {
+          font-size: 1.2rem;
+          color: #1C352D;
+          margin: 2rem 0 0.75rem;
+        }
+
+        .dark-mode .content-guide h3 {
+          color: #F4F0EC;
+        }
+
+        .content-guide p {
+          font-size: 1.05rem;
+          line-height: 1.85;
+          color: #555D50;
+          margin: 0 0 1rem;
+        }
+
+        .dark-mode .content-guide p {
+          color: #d6cfc7;
+        }
+
+        .content-guide ul {
+          margin: 0 0 1rem;
+          padding-left: 1.35rem;
+          color: #555D50;
+          line-height: 1.75;
+        }
+
+        .dark-mode .content-guide ul {
+          color: #d6cfc7;
+        }
       `}</style>
 
       {/* Hero Banner with rotating background effect */}
@@ -356,8 +415,39 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Popular Branches */}
-    
+      <section className="content-guide" aria-labelledby="guide-heading">
+        <h2 id="guide-heading">How Gujarat Technological University students can use past papers well</h2>
+        <p>
+          Gujarat Technological University (GTU) exams reward clear concepts and steady practice. Previous
+          year question papers (PYQs) are one of the most practical tools you have: they show how topics are
+          framed, how long answers are expected, and which themes repeat across years. This site is built so you
+          can move from <strong>branch → semester → subject → paper</strong> without hunting through folders or
+          unofficial uploads.
+        </p>
+        <h3>A simple study workflow that works for most GTU programs</h3>
+        <p>
+          Start by skimming the latest syllabus for your subject and note the unit weightage. Open the
+          corresponding PYQ on this platform and mark every question you can solve cold. For the rest, study the
+          worked solution, then try again the next day without notes. Repeat until you can explain each step in
+          your own words—not just copy symbols from memory.
+        </p>
+        <ul>
+          <li>Reserve the last two weeks before exams for full papers under a timer, not isolated chapter drills.</li>
+          <li>Compare your rough-work habits with the solution: marks are often lost on presentation and missing steps.</li>
+          <li>If the same question type appears in multiple years, treat it as a &quot;must master&quot; pattern.</li>
+        </ul>
+        <h3>Why we separate browsing from the PDF viewer</h3>
+        <p>
+          You can explore branches, semesters, and paper titles without an account so the catalog stays easy to
+          share with classmates. Opening the actual PDF in our online viewer uses a quick Google sign-in so we
+          can keep the service reliable and reduce abusive automated traffic. Your study session stays inside the
+          browser—use the page controls to jump between pages the same way you would in a desk PDF reader.
+        </p>
+        <p>
+          We are not affiliated with GTU; we collect and organize academic material to help students prepare.
+          Always cross-check critical facts with official notifications, your faculty, and the current syllabus.
+        </p>
+      </section>
     </div>
     </>
   );

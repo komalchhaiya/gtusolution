@@ -22,30 +22,29 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
-        {/* ✅ PUBLIC routes - Google AdSense crawlers can access these */}
+        {/* Public routes: real HTML content for users and crawlers (AdSense policy) */}
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage mode="degree" />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route
+            path="/degree/branch/:branchName"
+            element={<BranchSemesterPage />}
+          />
+          <Route
+            path="/:mode/branch/:branchName/semester/:semId"
+            element={<Subjects />}
+          />
+          <Route
+            path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId"
+            element={<PapersPage />}
+          />
         </Route>
 
-        {/* 🔒 PROTECTED routes - Require login */}
+        {/* PDF viewer only — requires sign-in; AdSense script is skipped on this path in Layout */}
         <Route element={<RequireAuth />}>
           <Route element={<Layout />}>
-            <Route
-              path="/degree/branch/:branchName"
-              element={<BranchSemesterPage />}
-            />
-            <Route
-              path="/:mode/branch/:branchName/semester/:semId"
-              element={<Subjects />}
-            />
-            <Route
-              path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId"
-              element={<PapersPage />}
-            />
-            {/* ✅ NO ADS should be placed in PDFViewerPage */}
             <Route
               path="/:mode/branch/:branchName/semester/:semId/subject/:subjectId/view"
               element={<PDFViewerPage />}

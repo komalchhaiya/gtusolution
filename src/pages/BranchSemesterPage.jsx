@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { trackEvent } from "../firebase/analyticsEvents";
+import SEO from "../components/SEO";
 
 function BranchSemesterPage() {
   const params = useParams();
@@ -15,6 +16,9 @@ function BranchSemesterPage() {
   ];
 
   const readable = branchName.replace(/-/g, " ");
+  const pageTitle = `${readable.toUpperCase()} — GTU Semester Papers with Solutions | GTU Paper Solution`;
+  const pageDescription = `Choose a semester for GTU ${readable} branch to view subject-wise previous year question papers with solutions and prepare for university exams.`;
+  const canonical = `https://gtusolution.com/degree/branch/${branchName}`;
 
   function handleOpenSemester(index) {
     trackEvent("semester_opened", {
@@ -28,6 +32,13 @@ function BranchSemesterPage() {
   }
 
   return (
+    <>
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        keywords={`GTU ${readable} papers with solutions, GTU ${readable} semester papers, GTU question papers ${readable}`}
+        canonical={canonical}
+      />
     <main className="main-content">
       <h1>{readable.toUpperCase()}</h1>
       <p>
@@ -57,6 +68,7 @@ function BranchSemesterPage() {
         })}
       </div>
     </main>
+    </>
   );
 }
 

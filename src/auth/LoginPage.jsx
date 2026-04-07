@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { loginWithGoogle } from "./firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
@@ -6,6 +6,7 @@ import { AuthContext } from "./AuthContext";
 function LoginPage() {
   const navigate = useNavigate();
   const { user, loading } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     if (!loading && user) {
@@ -14,14 +15,17 @@ function LoginPage() {
   }, [user, loading, navigate]);
 
   const handleGoogleLogin = async () => {
+    setErrorMessage(null);
     try {
       const result = await loginWithGoogle();
       console.log("Google Login:", result.user);
       navigate("/");
     } catch (error) {
-  console.error("Google Login Error:", error);
-  setError(error.message);
-}
+      console.error("Google Login Error:", error);
+      setErrorMessage(
+        error?.message || "Sign-in failed. Please try again."
+      );
+    }
   };
 
   if (loading) {
@@ -154,6 +158,16 @@ function LoginPage() {
             Access accurate, easy-to-understand GTU paper solutions anytime,
             anywhere.
           </p>
+
+          {errorMessage && (
+            <p
+              className="auth-subtitle"
+              style={{ color: "#b42318", marginBottom: "1rem" }}
+              role="alert"
+            >
+              {errorMessage}
+            </p>
+          )}
 
           <button className="google-btn" onClick={handleGoogleLogin}>
             <svg width="20" height="20" viewBox="0 0 24 24">

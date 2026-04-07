@@ -20,7 +20,7 @@ Allow: /contact
 Allow: /privacy
 
 # Sitemap location
-Sitemap: https://gtupapersolution.co.in/sitemap.xml
+Sitemap: https://gtusolution.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

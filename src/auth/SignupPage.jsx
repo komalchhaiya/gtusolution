@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { loginWithGoogle } from "./firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
@@ -6,6 +6,7 @@ import { AuthContext } from "./AuthContext";
 function SignupPage() {
   const navigate = useNavigate();
   const { user, loading } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   // Redirect to homepage if already logged in
   useEffect(() => {
@@ -15,14 +16,17 @@ function SignupPage() {
   }, [user, loading, navigate]);
 
   const handleGoogleSignup = async () => {
+    setErrorMessage(null);
     try {
       const result = await loginWithGoogle();
       console.log("Google Signup:", result.user);
       navigate("/");
     } catch (error) {
-  console.error("Google Login Error:", error);
-  setError(error.message);
-}
+      console.error("Google Signup Error:", error);
+      setErrorMessage(
+        error?.message || "Sign-up failed. Please try again."
+      );
+    }
   };
 
   // Show loading while checking auth state
@@ -51,6 +55,16 @@ function SignupPage() {
       <div className="auth-box">
         <h2 className="auth-title">Create Account</h2>
         <p className="auth-subtitle">Sign up with Google to access GTU Papers</p>
+
+        {errorMessage && (
+          <p
+            className="auth-subtitle"
+            style={{ color: "#b42318", marginBottom: "1rem" }}
+            role="alert"
+          >
+            {errorMessage}
+          </p>
+        )}
 
         <button className="google-btn" onClick={handleGoogleSignup}>
           <svg width="20" height="20" viewBox="0 0 24 24" style={{ marginRight: '8px', verticalAlign: 'middle' }}>

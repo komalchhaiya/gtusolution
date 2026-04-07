@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import subjectsData from "../data/subjectsData";
 import { trackEvent } from "../firebase/analyticsEvents";
+import SEO from "../components/SEO";
 
 export default function PapersPage() {
   const { mode, branchName, semId, subjectId } = useParams();
@@ -12,6 +13,15 @@ export default function PapersPage() {
   if (!subject) {
     return <h2>Subject not found</h2>;
   }
+
+  const readableBranch = (text) =>
+    text.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+  const canonical = `https://gtusolution.com/${mode}/branch/${branchName}/semester/${semId}/subject/${subjectId}`;
+  const pageTitle = `${subject.name} — GTU Previous Year Papers with Solutions | GTU Paper Solution`;
+  const pageDescription = `Browse GTU ${subject.name} previous year question papers with solutions for ${readableBranch(
+    branchName
+  )}, Semester ${semId}. Open any year in the viewer after signing in to study online.`;
 
   function handleOpenPaper(paper) {
     trackEvent("paper_opened", {
@@ -26,6 +36,15 @@ export default function PapersPage() {
   }
 
   return (
+    <>
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        keywords={`GTU ${subject.name} papers with solutions, GTU ${subject.name} solved papers, ${readableBranch(
+          branchName
+        )} semester ${semId} GTU`}
+        canonical={canonical}
+      />
     <div className="main-content">
       <h1>{subject.name}</h1>
       <p>
@@ -53,5 +72,6 @@ export default function PapersPage() {
         ))}
       </div>
     </div>
+    </>
   );
 }
