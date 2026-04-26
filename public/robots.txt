@@ -18,9 +18,12 @@ Allow: /degree/
 Allow: /about
 Allow: /contact
 Allow: /privacy
+Allow: /terms
+Allow: /disclaimer
+Allow: /study-guides
 
 # Sitemap location
-Sitemap: https://gtusolution.com/sitemap.xml
+Sitemap: https://gtupapersolution.co.in/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

@@ -46,7 +46,7 @@ export default function ContactUs() {
         title="Contact Us - GTU Paper Solution"
         description="Contact GTU Paper Solution for questions, suggestions, or support. Reach out to us at gtupapersol@gmail.com for any queries about GTU previous year papers."
         keywords="GTU paper solution contact, GTU papers support, GTU question papers help"
-        canonical="https://gtusolution.com/contact"
+        canonical="https://gtupapersolution.co.in/contact"
       />
     <div style={styles.container}>
       <h1 style={styles.title}>Get in Touch</h1>
@@ -57,7 +57,7 @@ export default function ContactUs() {
       </p>
 
       <div style={styles.emailBox}>
-        <a href="mailto:your.email@gmail.com" style={{ textDecoration: "none", color: "inherit" }}>
+        <a href="mailto:gtupapersol@gmail.com" style={{ textDecoration: "none", color: "inherit" }}>
           gtupapersol@gmail.com
         </a>
       </div>

@@ -25,6 +25,8 @@ export default function Navbar() {
     links: {
       display: "flex",
       gap: "1.5rem",
+      flexWrap: "wrap",
+      justifyContent: "flex-end",
     },
     link: {
       textDecoration: "none",
@@ -79,6 +81,33 @@ export default function Navbar() {
             }
           >
             Privacy Policy
+          </NavLink>
+
+          <NavLink
+            to="/study-guides"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.active } : styles.link
+            }
+          >
+            Study Guides
+          </NavLink>
+
+          <NavLink
+            to="/terms"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.active } : styles.link
+            }
+          >
+            Terms
+          </NavLink>
+
+          <NavLink
+            to="/disclaimer"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.active } : styles.link
+            }
+          >
+            Disclaimer
           </NavLink>
         </div>
       </div>

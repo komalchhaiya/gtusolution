@@ -3,145 +3,146 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <!-- Homepage -->
   <url>
-    <loc>https://gtusolution.com/</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://gtupapersolution.co.in/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- About Page -->
   <url>
-    <loc>https://gtusolution.com/about</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/about</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Contact Page -->
   <url>
-    <loc>https://gtusolution.com/contact</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/contact</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/privacy</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <!-- Privacy Policy -->
   <url>
-    <loc>https://gtusolution.com/privacy</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/terms</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
-  
-  <!-- Computer Engineering Branch -->
   <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/disclaimer</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/study-guides</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Semester 3 Subjects -->
+
   <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/3</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/1</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Semester 4 Subjects -->
   <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/4</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/1/subject/DBMS</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/1/subject/DS</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/1/subject/IC</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/2</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Semester 5 Subjects -->
   <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/5</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/2/subject/pem</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/2/subject/os</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/2/subject/oops</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/2/subject/coa</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/3</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Semester 6 Subjects -->
   <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/6</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/3/subject/ADA</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/3/subject/PE</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/4</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Subject Pages - Semester 3 -->
   <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/3/subject/DBMS</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/4/subject/AJP</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/3/subject/DS</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://gtupapersolution.co.in/degree/branch/computer-engineering/semester/4/subject/WP</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/3/subject/IC</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Subject Pages - Semester 4 -->
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/4/subject/os</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/4/subject/oops</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/4/subject/coa</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Subject Pages - Semester 5 -->
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/5/subject/ADA</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/5/subject/PE</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Subject Pages - Semester 6 -->
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/6/subject/AJP</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gtusolution.com/degree/branch/computer-engineering/semester/6/subject/WP</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
 </urlset>

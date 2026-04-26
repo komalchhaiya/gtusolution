@@ -12,6 +12,8 @@ function SEO({
   ogImage = "/vite.svg"
 }) {
   useEffect(() => {
+    const currentUrl = window.location.href;
+
     // Update title
     document.title = title;
     
@@ -52,7 +54,25 @@ function SEO({
         link.setAttribute('rel', 'canonical');
         document.head.appendChild(link);
       }
-      link.setAttribute('href', canonical);
+      let finalCanonical = canonical;
+      try {
+        const canonicalUrl = new URL(canonical);
+        const current = new URL(currentUrl);
+        if (canonicalUrl.host !== current.host) {
+          finalCanonical = `${current.origin}${canonicalUrl.pathname}${canonicalUrl.search}${canonicalUrl.hash}`;
+        }
+      } catch (error) {
+        finalCanonical = currentUrl;
+      }
+      link.setAttribute('href', finalCanonical);
+    } else {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', currentUrl);
     }
   }, [title, description, keywords, canonical, ogImage]);
   

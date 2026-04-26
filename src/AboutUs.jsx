@@ -40,7 +40,7 @@ export default function AboutUs() {
         title="About Us - GTU Paper Solution | Previous Year Papers with Solutions"
         description="Learn about GTU Paper Solution - your trusted platform for GTU previous year question papers with solutions. We provide accurate solutions organized by branch and semester to help students excel in exams."
         keywords="GTU paper solution about, GTU previous year papers with solutions, GTU exam preparation, GTU question papers with solutions, GTU solved papers"
-        canonical="https://gtusolution.com/about"
+        canonical="https://gtupapersolution.co.in/about"
       />
     <div style={styles.container}>
       <h1 style={styles.title}>About Us</h1>
