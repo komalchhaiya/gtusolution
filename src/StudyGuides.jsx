@@ -128,7 +128,7 @@ export default function StudyGuides() {
                   your error log and short notes.
                 </p>
                 <Link
-                  to={`/degree/branch/${branchKey}/semester/${semId}/subject/${subjectId}`}
+                  to={`/degree/branch/${branchKey}/semester/${semId}/subject/${subjectId.toLowerCase()}`}
                   style={{ color: "#1C352D", fontWeight: 700 }}
                 >
                   Open {subject.name} Papers

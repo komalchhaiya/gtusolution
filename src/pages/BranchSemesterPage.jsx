@@ -1,12 +1,18 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { trackEvent } from "../firebase/analyticsEvents";
 import SEO from "../components/SEO";
+
+const KNOWN_BRANCHES = ["computer-engineering"];
 
 function BranchSemesterPage() {
   const params = useParams();
   const navigate = useNavigate();
 
   const branchName = params.branchName;
+
+  if (!KNOWN_BRANCHES.includes(branchName)) {
+    return <Navigate to="/404" replace />;
+  }
 
   const semesters = [
     "Semester 3",

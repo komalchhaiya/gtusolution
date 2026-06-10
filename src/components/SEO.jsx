@@ -9,7 +9,8 @@ function SEO({
   description = "Access GTU previous year question papers with solutions organized by branch and semester. Free PDF viewer for exam preparation.",
   keywords = "GTU papers with solutions, GTU previous year papers with solutions, GTU question papers with solutions, GTU solved papers",
   canonical = "",
-  ogImage = "/vite.svg"
+  ogImage = "/vite.svg",
+  robots = "index, follow",
 }) {
   useEffect(() => {
     const currentUrl = window.location.href;
@@ -35,6 +36,9 @@ function SEO({
     
     // Update keywords
     updateMetaTag('keywords', keywords);
+
+    // Update robots
+    updateMetaTag('robots', robots);
     
     // Update Open Graph tags
     updateMetaTag('og:title', title, true);
@@ -74,7 +78,7 @@ function SEO({
       }
       link.setAttribute('href', currentUrl);
     }
-  }, [title, description, keywords, canonical, ogImage]);
+  }, [title, description, keywords, canonical, ogImage, robots]);
   
   return null;
 }

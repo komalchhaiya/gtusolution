@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import subjectsData from "../data/subjectsData";
 import SEO from "../components/SEO";
 
@@ -16,7 +16,7 @@ export default function Subjects() {
     subjectsData?.[mode]?.[branchName]?.[Number(semId)];
 
   if (!subjects) {
-    return <h2>No subjects found</h2>;
+    return <Navigate to="/404" replace />;
   }
 
   return (
@@ -38,9 +38,12 @@ export default function Subjects() {
         {Object.entries(subjects).map(([subjectId, subject]) => (
           <div key={subjectId} className="card">
             <h2>{subject.name}</h2>
+            <p style={{ color: "#6b533c", fontSize: "0.9rem", margin: "0.4rem 0 1rem" }}>
+              {subject.papers.length} paper{subject.papers.length === 1 ? "" : "s"} available
+            </p>
             <button
               className="btn-open"
-              onClick={() => navigate(`subject/${subjectId}`)}
+              onClick={() => navigate(`subject/${subjectId.toLowerCase()}`)}
             >
               Open
             </button>

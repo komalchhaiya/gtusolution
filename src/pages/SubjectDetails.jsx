@@ -3,7 +3,7 @@ import subjectsData from "../data/subjectsData";
 
 /* 🔹 ANALYTICS IMPORTS (ADDED ONLY) */
 import { logEvent } from "firebase/analytics";
-import { analytics } from "../firebase";
+import { analytics } from "../auth/firebaseAnalytics";
 
 function SubjectDetails() {
   const { branchName, semId, subId } = useParams();

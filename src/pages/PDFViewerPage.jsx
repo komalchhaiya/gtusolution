@@ -6,7 +6,7 @@ import "./PDFViewerPage.css";
 
 /* 🔹 ANALYTICS IMPORTS (ADDED ONLY) */
 import { logEvent } from "firebase/analytics";
-import { analytics } from "../auth/firebase";
+import { analytics } from "../auth/firebaseAnalytics";
 
 pdfjs.GlobalWorkerOptions.workerSrc =
   new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();

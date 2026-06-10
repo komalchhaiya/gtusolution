@@ -7,9 +7,24 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    if (
+      (typeof globalThis !== "undefined" && globalThis.__PRERENDER__) ||
+      (typeof window !== "undefined" && window.__PRERENDER__)
+    ) {
+      return false;
+    }
+    return true;
+  });
 
   useEffect(() => {
+    if (
+      (typeof globalThis !== "undefined" && globalThis.__PRERENDER__) ||
+      (typeof window !== "undefined" && window.__PRERENDER__)
+    ) {
+      return undefined;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);   // user is firebase user object
       setLoading(false);
